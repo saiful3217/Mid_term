@@ -1,8 +1,8 @@
 class Star_Cinema:
-    hall_list=[]
+    __hall_list=[]
 
-def  entry_hall(self,hall):
-    self.hall_list.append(hall)
+    def  entry_hall(self,hall):
+        self.__hall_list.append(hall)
     
 
 class Hall(Star_Cinema):
@@ -10,19 +10,16 @@ class Hall(Star_Cinema):
     def __init__(self,rows,cols,hall_no) -> None:
         super().__init__()
         self.seats ={}
-        self.show_list=[]
-        self.rows=rows
+        self.__show_list=[]
+        self.__rows=rows
         self.cols=cols
-        self.hall_no=hall_no
+        self.__hall_no=hall_no
         star_cinema=Star_Cinema()
-        star_cinema.hall_list.append(self)
-        
-    # def  entry_hall(self):
-    #     star_cinema.hall_list.append(Hall(self.rows,self.cols,self.hall_no))
-
+        star_cinema.entry_hall(self)
+    
     def entry_show(self,id, movie_name, time):
-        self.show_list.append((id,movie_name,time))
-        a=[[0 for i in range(self.cols)]for j in range(self.rows)]
+        self.__show_list.append((id,movie_name,time))
+        a=[[0 for i in range(self.cols)]for j in range(self.__rows)]
         self.seats[id]=a
 
     def book_seats(self,id,input_r_c):
@@ -40,7 +37,7 @@ class Hall(Star_Cinema):
         
         
     def view_show_list(self):
-        for shows in self.show_list:
+        for shows in self.__show_list:
             print(f'Movie ID:{shows[0]} Movie Name: {shows[1]} Time: {shows[2]}' )
     def view_available_seats(self,id):
         seats=self.seats[id]
@@ -97,6 +94,12 @@ while True:
         else:
             print("INVALID MOVIE ID")
 
+            
+
+    elif option==4:
+        break
+    else:
+        print("WRONG COMMAND. PLEASE ENTER CORRECTLY")
             
 
     elif option==4:
