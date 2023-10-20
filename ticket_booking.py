@@ -102,7 +102,4 @@ while True:
         print("WRONG COMMAND. PLEASE ENTER CORRECTLY")
             
 
-    elif option==4:
-        break
-    else:
-        print("WRONG COMMAND. PLEASE ENTER CORRECTLY")
+    
